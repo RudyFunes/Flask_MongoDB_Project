@@ -1,0 +1,32 @@
+{% extends "template.html" %}
+{% block content %}
+
+  <header id="hero" class="hero">
+    <div class="flex-container w-container">
+      <div>
+        <h1>Add an expense</h1>
+        <a href="{{ url_for('addExpenses') }}" class="button-8 w-button">Add an Expense</a>
+      </div>
+    </div>
+  </header>
+<section id="feature-section" class="feature-section">
+    <div class="flex-container w-container">
+      <div>
+        <h2>Track your expenses</h2>
+
+        <p> In total, you have spent  {{ "$%.2f"|format(expenses) }} dollars so far. </p>
+        <h2>By category</h2>
+
+          {% for category in expensesByCategory %}
+              US$ {{ "$%.2f"|format(category[1]) }}   in <b>{{ category[0] }} </b>
+              <br>
+           {% endfor %}
+      </div>
+
+    </div>
+    <br>
+    <p style="text-align: center"> Last item bought<b> {{ lastItem }} </b> price {{ "$%.2f"|format(lastPurchase) }} category <b> {{ lastCategory }} </b>
+  </section>
+
+
+{% endblock %}
